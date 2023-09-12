@@ -1,0 +1,67 @@
+#Presentation {
+
+    .img-presentation {
+        border-radius: 50%;
+        max-width: 500px;
+        animation: 5s borderNeon infinite;
+    }
+
+    .text-presentation {
+        z-index: 100;
+        height:500px;
+        @media (min-width:556px) {
+            height:350px;
+        }
+    }
+
+    .text-content {
+        font-family: 'Raleway', sans-serif;
+        animation: 9s fadeIn ease-in;
+    }
+
+    .borde-presentation {
+        top: 16px;
+        right: 15px;
+        z-index: 0;
+    }
+}
+
+@keyframes borderNeon {
+    0% {
+        box-shadow: 5px -5px 8px $magen;
+    }
+
+    25% {
+        box-shadow: 5px 5px 8px $cyan;
+    }
+
+    50% {
+        box-shadow: -5px -5px 8px $cyan;
+    }
+
+    75% {
+        box-shadow: -5px 5px 8px $magen;
+    }
+
+    100% {
+        box-shadow: 5px -5px 8px $magen;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

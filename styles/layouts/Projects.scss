@@ -1,0 +1,41 @@
+#Projects {
+    font-family: 'Raleway', sans-serif;
+
+    #Card:hover {
+        cursor: pointer;
+    }
+
+    #Card img {
+        transition: .6s;
+    }
+    #Card:hover img {
+        filter: brightness(0.3);
+    }
+}
+
+.modal-content {
+    font-family: 'Raleway', sans-serif;
+    background-color: $dark;
+    color: $cyanLight;
+    border-radius: 0;
+    border: 1px solid cyan;
+    padding: 16px;
+}
+
+.modal-button {
+    font-family: "Orbitron", sans-serif;
+}
+
+.see-more-button{
+    color: $magenLight;
+    font-family: "Orbitron", sans-serif;
+    text-transform: uppercase;
+    background-color:#6e3c7c80 ;
+    cursor: pointer;
+    transition: 1s all;
+}
+.see-more-button:hover{
+    color: $cyan;
+    background:linear-gradient(#8b00b68a, #000);
+    transition: 1s ease-in-out;
+}

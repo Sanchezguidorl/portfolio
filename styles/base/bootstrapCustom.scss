@@ -1,0 +1,25 @@
+@import "../abstracts/variables.scss";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+$custom-colors:(
+    'magen':#ff00ff,
+    'cyan':#00ffff,
+    'primaryMagen':$primaryMagen,
+    'cyanLight':$cyanLight,
+    'magenLight':$magenLight,
+    'secondaryCyan':$secondaryCyan,
+    'magenDark':$magenDark,
+    'magenDark50':$magenDark50
+    );
+    
+    $theme-colors: (
+        "primary": $primaryCyan,
+        "secondary": $secondary,
+        "dark": $dark
+        );
+        
+        $theme-colors: map-merge($theme-colors, $custom-colors);
+
+    @import "../../node_modules/bootstrap/scss/bootstrap";
