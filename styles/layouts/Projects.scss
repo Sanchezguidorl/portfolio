@@ -1,6 +1,10 @@
 #Projects {
     font-family: 'Raleway', sans-serif;
 
+    #Card{
+    animation:2s showCard forwards;
+    }
+
     #Card:hover {
         cursor: pointer;
     }
@@ -38,4 +42,15 @@
     color: $cyan;
     background:linear-gradient(#8b00b68a, #000);
     transition: 1s ease-in-out;
+}
+
+
+@keyframes showCard {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
 }

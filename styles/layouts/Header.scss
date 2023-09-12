@@ -1,7 +1,21 @@
 #Header{
     font-family: "Orbitron",sans-serif;
+    transition:.3s ease-in-out;
 
+    .logo-img-header{
+max-width: 100px;
+border-radius: 50%;
+    }
 a:hover{
 text-shadow:$cyan 0px 0px 18px;
 }
+}
+
+.header-sticky{
+    padding: 20px 10px;
+    box-shadow: rgba(0, 204, 255, 0.774) 0px 5px 15px;
+    position: fixed;
+    width: 100%;
+    z-index: 1050;
+    top: 0;
 }

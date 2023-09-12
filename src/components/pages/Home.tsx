@@ -10,6 +10,7 @@ function Home() {
   return (
 <>
 <Presentation/>
+<h1 className='h1-studies text-uppercase text-center text-magen'>Estudios Realizados</h1>
 <Studies/>
 <Container className='my-5'>
 <Row>
@@ -19,6 +20,7 @@ function Home() {
 </Col>
 <Col xs={12} lg={7}><LevelSkills/></Col>
 </Row>
+<h1 className='h1-studies text-uppercase text-center text-magen mt-5'>Mis Proyectos</h1>
 <Projects/>
 </Container>
 </>
