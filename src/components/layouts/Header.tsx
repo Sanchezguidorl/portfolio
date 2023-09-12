@@ -1,4 +1,5 @@
 import { Navbar } from "react-bootstrap";
+import { MouseEvent } from 'react';
 import logo from "../../assets/images/capibara-logo.png";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -23,10 +24,10 @@ function Header() {
     };
   }, []);
 
-  const scrollToSection = (event) => {
+  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    const targetId = event.target.getAttribute("href").substring(1);
-    const targetElement = document.getElementById(targetId);
+    const targetId = event.currentTarget.getAttribute('href')?.substring(1);
+    const targetElement = document.getElementById(targetId || '');
 
     if (targetElement) {
       const offset = 160;
