@@ -6,8 +6,20 @@
 max-width: 100px;
 border-radius: 50%;
     }
+a{
+    font-size: 14px;
+}
+
 a:hover{
 text-shadow:$cyan 0px 0px 18px;
+}
+
+button.navbar-toggler span{
+filter: brightness(2);
+}
+
+button.navbar-toggler{
+border:1px solid $light;
 }
 }
 
