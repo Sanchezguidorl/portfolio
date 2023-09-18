@@ -1,3 +1,4 @@
+import './firebase/config.js';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/layouts/Header';
 import '../styles/main.scss';

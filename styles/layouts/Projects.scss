@@ -1,7 +1,14 @@
 #Projects {
     font-family: 'Raleway', sans-serif;
 
+    .col-card-projects{
+        overflow: hidden;
+        height: 300px;
+    }
+
     #Card{
+        background-position: center center;
+        background-size: cover;
     animation:2s showCard forwards;
     }
 

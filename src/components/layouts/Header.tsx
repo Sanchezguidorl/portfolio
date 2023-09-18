@@ -4,7 +4,6 @@ import logo from "../../assets/images/capibara-logo.png";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 function Header() {
   const [headerSticky, setHeaderSticky] = useState(false);
 
@@ -85,18 +84,6 @@ function Header() {
               >
                 SOBRE MI
               </a>
-              <Link
-                to={"/projects"}
-                className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
-              >
-                Projects admin
-              </Link>
-              <Link
-                to={"/studies"}
-                className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
-              >
-                Studies admin
-              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

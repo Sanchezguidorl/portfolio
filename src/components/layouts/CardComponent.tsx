@@ -1,78 +1,82 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import img1 from "../../assets/images/foto-card.png";
+import imgClima from "../../assets/images/projets/app-clima.png";
+import imgMusculos from "../../assets/images/projets/app-fabrica.png";
+import imgStore from "../../assets/images/projets/app-store.png";
+import imgTareas from "../../assets/images/projets/app-tareas.png";
 
+//Interface con tipos de dato para objetos project
 interface dataProject {
   image: string;
-  text: string;
+  description: string;
+  site: string;
+  name: string;
 }
 
 function CardComponent() {
+  //todos los datos de proyectos
   const totalData = [
-    { image: img1, text: "texto1" },
-    { image: img1, text: "texto2" },
-    { image: img1, text: "texto3" },
-    { image: img1, text: "texto4" },
-    { image: img1, text: "texto" },
-    { image: img1, text: "texto" },
-    { image: img1, text: "texto5" },
-    { image: img1, text: "texto6" },
-    { image: img1, text: "texto7" },
-    { image: img1, text: "texto8" },
+    { name:"App del clima",image: imgClima, description: "Proyecto realizado utilizando React, donde se empleó Axios para la integración con una API, la cual proporciona los nombres de localidades argentinas. Esta efectúa una solicitud a otra API que suministra datos climáticos en función a las coordenadas.", site:'https://elegant-custard-649571.netlify.app/' },
+    { name:"Fabrica de músculos",image: imgMusculos, description: "Landing page realizada utilizando React para el frontend y la biblioteca express para la administración del contenido alojado en una base de datos mongoDB.", site:'https://visionary-florentine-9c4d59.netlify.app/' },
+    { name:"Tienda online" ,image: imgStore, description: "Tienda de productos implementada con React, integrando Sass, Bootstrap y Redux para la capa frontend. Se emplea la biblioteca Axios para consultar una API de productos.", site:'https://incandescent-choux-15deec.netlify.app/' },
+    { name:"Lista de tareas",image: imgTareas, description: "Proyecto realizado utilizando React, el cual permite crear, editar, mostrar y completar tareas almacenadas en el localstorage.", site:'https://stunning-crostata-ba4fb5.netlify.app/' }
   ];
-  const partialData = totalData.slice(0, 6);
+  //variable con datos a mostrar en caso de que totalData tenga más de 6 elementos o no
+  const partialData = totalData.length>6?totalData.slice(0, 6):totalData;
+  const [projects, setProjects] = useState(partialData);
+  //estado de botón para mostrar todos los proyectos en caso de existir
+  const [showAllCards, setShowAllCards] = useState(false);
+  //estado para mostrar el modal
   const [show, setShow] = useState(false);
-  const [data, setData] = useState(partialData);
-  const [modalDataByIndex, setModalDataByIndex] = useState<dataProject>();
+  //estado que controla los datos del objeto que debe mostrar el modal
+  const [modalProjectByIndex, setModalProjectByIndex] = useState<dataProject>();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [areThereMoreCards, setAreThereMoreCards] = useState(false);
-  const [showAllCards, setShowAllCards] = useState(false);
-  useEffect(() => {
-    if (totalData.length > 6) {
-      setAreThereMoreCards(true);
-    }
-  }, [totalData.length]);
 
+  //Cambia atrue el estado para mostrar el modal en caso de que modalProjectByIndex tenga datos
   useEffect(() => {
+    if(modalProjectByIndex){
     handleShow();
-  }, [modalDataByIndex]);
+    }
+  }, [modalProjectByIndex]);
 
+
+  //Asigna todos los datos de proyectos al array de proyectos en caso de que showAllCards sea true
   useEffect(() => {
     if (showAllCards) {
-      setData(totalData);
+      setProjects(totalData);
     } else {
-      setData(partialData);
+      setProjects(partialData);
     }
   }, [showAllCards]);
 
   return (
     <>
       <Row className="d-flex justify-content-center position-relative">
-        {data.map((dato, index) => (
-          <Col key={index} xs={12} md={6} lg={4} className="p-1">
+        {projects.map((dato, index) => (
+          <Col key={index} xs={12} md={6} lg={4} className="p-1 col-card-projects">
             <Card
               id="Card"
-              className="bg-dark text-white"
+              className="bg-dark text-white" 
               onClick={() => {
-                setModalDataByIndex(data[index]);
+                setModalProjectByIndex(projects[index]);
               }}
             >
-              <Card.Img src={dato.image} alt="Card image" />
+              <img src={dato.image} alt="" className="position-absolute w-100" />
               <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>{dato.name}</Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+{
+  dato.description
+}
                 </Card.Text>
-                <Card.Text>Last updated 3 mins ago</Card.Text>
               </Card.ImgOverlay>
             </Card>
           </Col>
         ))}
-        {areThereMoreCards && (
+        {totalData.length>6 && (
           <div
             className="d-flex justify-content-center align-items-center py-5 position-absolute bottom-0 see-more-button"
             onClick={() => setShowAllCards(!showAllCards)}
@@ -81,14 +85,14 @@ function CardComponent() {
           </div>
         )}
       </Row>
-      {modalDataByIndex && (
-        <Modal show={show} onHide={handleClose}>
+      {modalProjectByIndex && (
+        <Modal show={show} onHide={handleClose} backdrop='static'>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>{modalProjectByIndex.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body className="p-0">
-            <img src={modalDataByIndex.image} className="w-100" alt="" />
-            <p className="pt-2">{modalDataByIndex.text}</p>
+            <img src={modalProjectByIndex.image} className="w-100" alt="" />
+            <p className="pt-2">{modalProjectByIndex.description}</p>
           </Modal.Body>
           <Modal.Footer className="d-flex justify-content-between px-0">
             <Button
@@ -98,6 +102,7 @@ function CardComponent() {
             >
               CERRAR
             </Button>
+            <a href={modalProjectByIndex.site} target="blank">
             <Button
               variant="primary"
               className="rounded-0 modal-button m-0"
@@ -105,6 +110,7 @@ function CardComponent() {
             >
               VER PROYECTO
             </Button>
+            </a>
           </Modal.Footer>
         </Modal>
       )}
