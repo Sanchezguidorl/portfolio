@@ -1,6 +1,6 @@
 import { Card, Col, Container, Row } from "react-bootstrap"
 import { useEffect, useState } from 'react';
-import { getStudies } from "../customHooks/studiesMethods";
+import { dataStudy, getStudies } from "../customHooks/studiesMethods";
 import { Study } from './../customHooks/studiesMethods';
 
 function Studies() {
@@ -9,10 +9,10 @@ const [studies,setStudies]= useState<Study[]>();
 useEffect(()=>{
 
 const fetchData=async()=>{
-  const studiesData= await getStudies();
+  const studiesData:dataStudy= await getStudies();
 
-if(studiesData){
-  setStudies(studiesData);
+if(studiesData.success){
+  setStudies(studiesData.data);
 }
 }
 
@@ -24,16 +24,16 @@ fetchData();
 <Container>
 {studies ?
     <Row id="Studies" className="d-flex justify-content-center">
-{studies && 
+{studies.length>0 && 
 studies.map((study)=>(
-  <Col key={study.id} xs={12} md={6} lg={4} className="p-1">
+  <Col key={study._id} xs={12} md={6} lg={4} className="p-1">
   <Card
     className="p-4 bg-magenDark text-secondaryCyan border border-1 border-secondaryCyan h-100"
   >
     <Card.Body>
-      <Card.Title className="fs-6 text-uppercase"><img src={`${study.imagen}`} alt={study.curso} className="logo-study me-3"/>{study.institucion}</Card.Title>
+      <Card.Title className="fs-6 text-uppercase"><img src={`${study.logoInstitucion}`} alt={study.nombre} className="logo-study me-3"/>{study.institucion}</Card.Title>
       <Card.Text className="fs-5 p-3">
-{study.curso}
+{study.nombre}
       </Card.Text>
     </Card.Body>
     <Card.Footer className="text-end border-secondary fs-6 text-uppercase">{study.estado}</Card.Footer>

@@ -5,10 +5,10 @@ import {
 } from "react-circular-progressbar";
 
 function LevelSkills() {
-    const tecnologies=[{ tecnology:'Typescript', level:68},{ tecnology:'PHP', level:68},
-    { tecnology:'Javascript', level:68},{ tecnology:'Java', level:68},
-    { tecnology:'Express', level:68},{ tecnology:'Sass', level:68},
-    { tecnology:'SQL', level:68},{ tecnology:'Bootstrap', level:68}];
+    const tecnologies=[{ tecnology:'Typescript', level:68},{ tecnology:'PHP', level:40},
+    { tecnology:'Javascript', level:80},{ tecnology:'Java', level:50}, { tecnology:'React', level:75},
+    { tecnology:'Express', level:55},{ tecnology:'Sass', level:80},
+    { tecnology:'SQL', level:80},{ tecnology:'Bootstrap', level:70}];
 
   return (
     <Row id="LevelSkills" className="d-flex justify-content-center" >

@@ -1,38 +1,58 @@
-import { getFirestore, DocumentData } from "firebase/firestore";
-import { getDocs } from "firebase/firestore";
-import { collection } from "firebase/firestore";
-
-const db=getFirestore();
-const studies= collection(db,'studies');
+import axios, { AxiosResponse } from "axios";
+const DB= "http://localhost:5000";
 
 export interface Study {
-    id: string;
-    curso: string;
+    _id: string;
+    nombre: string;
     institucion: string;
     estado: string;
-    imagen: string;
+    logoInstitucion: string;
   }
 
-export const getStudies=async()=>{
+export interface dataStudy{
+  success: boolean, data: Study[] | Study | null
+}  
+export const getStudies=async(): Promise<dataStudy>=>{
     try {
-        const querySnapshot = await getDocs(studies);
-        const studiesData:Study[]= [];
-    
-        querySnapshot.forEach((doc) => {
-            // Accede a los datos de cada documento
-            const studyData: DocumentData = doc.data();
-            const study: Study = {
-                id: doc.id,
-                curso: studyData.curso,
-                institucion: studyData.institucion,
-                estado: studyData.estado,
-                imagen: studyData.imagen
-              // Agrega otros campos según tu estructura de datos
-            }
-            studiesData.push(study);
-        })
-    return studiesData;
+        const studiesData:AxiosResponse<dataStudy>= await axios.get(`${DB}/studies`);
+        return studiesData.data;
       } catch (error) {
-        return false;
+        return error;
       }
 };
+export const getStudiesById=async(id:string): Promise<dataStudy>=>{
+    try {
+        const studyData:AxiosResponse<dataStudy>= await axios.get(`${DB}/studies/${id}`);
+        return studyData.data;
+      } catch (error) {
+        return error;
+      }
+};
+
+export const updateStudy = async (study: Study): Promise<dataStudy> => {
+  try {
+    const studyData: AxiosResponse<dataStudy> = await axios.post(`${DB}/studies/update/${study._id}`, study);
+    return studyData.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const createStudy = async (study: Study): Promise<dataStudy> => {
+  try {
+    const studyData: AxiosResponse<dataStudy> = await axios.post(`${DB}/studies/create`, study);
+    return studyData.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deleteStudy = async (id: Study): Promise<dataStudy> => {
+  try {
+    const studyData: AxiosResponse<dataStudy> = await axios.delete(`${DB}/studies/delete/${id}`);
+    return studyData.data;
+  } catch (error) {
+    return error;
+  }
+};
+

@@ -4,9 +4,10 @@ import logo from "../../assets/images/capibara-logo.png";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 function Header() {
   const [headerSticky, setHeaderSticky] = useState(false);
-
+  console.log(import.meta.env.REACT_APP_LOGLOCO)
   useEffect(() => {
     const handleScroll = (): void => {
       if (window.scrollY > 0) {
@@ -84,6 +85,18 @@ function Header() {
               >
                 SOBRE MI
               </a>
+              <Link
+                to={"studies"}
+                className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
+              >
+                studies
+              </Link>
+              <Link
+                to={"projects"}
+                className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
+              >
+                projects
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

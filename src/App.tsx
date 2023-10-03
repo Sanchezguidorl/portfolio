@@ -8,6 +8,7 @@ import ProjectsAdmin from './components/pages/ProjectsAdmin';
 import StudiesAdmin from './components/pages/StudiesAdmin';
 import FormEditStudies from './components/layouts/FormEditStudies';
 import FormEditProjects from './components/layouts/FormEditProjects';
+import FormCreateStudies from './components/layouts/FormCreateStudies.js';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
   <Route path='/projects' element={<ProjectsAdmin/>}/>
   <Route path='/studies' element={<StudiesAdmin/>}/>
   <Route path='/form/studies' element={<FormEditStudies/>}/>
+  <Route path='/form/studies/create' element={<FormCreateStudies/>}/>
   <Route path='/form/projects' element={<FormEditProjects/>}/>
 </Routes>
 <Footer/>
