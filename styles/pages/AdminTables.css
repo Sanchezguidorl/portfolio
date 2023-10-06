@@ -1,0 +1,6 @@
+#ProjectsAdmin h1, #StudiesAdmin h1 {
+  font-family: "Orbitron", sans-serif;
+}
+#ProjectsAdmin .td-img-table-projects, #StudiesAdmin .td-img-table-projects {
+  max-width: 100px;
+}/*# sourceMappingURL=AdminTables.css.map */

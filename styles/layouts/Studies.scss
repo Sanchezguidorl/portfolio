@@ -16,18 +16,3 @@
 }
 
 
-.success-add{
-    background-color: #cceeee;
-    animation: fadeSuccess 2s ease-in-out;
-}
-
-
-@keyframes fadeSuccess {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-
-}

@@ -1,0 +1,32 @@
+.maxwidht {
+  max-width: 300px;
+}
+
+.carrouselTransition {
+  animation: 5.2s opacityAnimation ease-in;
+}
+
+.cover-carrousel {
+  z-index: 100;
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=Carrousel.css.map */

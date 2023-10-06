@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Study,
   dataStudy,
@@ -12,11 +13,10 @@ function FormEditStudies() {
   const [validated, setValidated] = useState(false);
   const [study, setStudy] = useState<Study | undefined>(undefined);
   const [errors, setErrors] = useState<string>("");
-  const location = useLocation();
-  const queryParam = new URLSearchParams(location.search);
-  const idStudy = queryParam.get("id");
+  const queryParam = useParams();
+  const idStudy = queryParam.id;
   const [successUpdate, setSuccessUpdate] = useState(false);
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       if (idStudy) {
@@ -39,13 +39,13 @@ function FormEditStudies() {
     fetchData();
   }, [idStudy]);
 
-  useEffect(()=>{
-if(successUpdate){
-  setTimeout(() => {
-    navigate("/studies");
-  }, 4000);
-}
-  },[successUpdate]);
+  useEffect(() => {
+    if (successUpdate) {
+      setTimeout(() => {
+        navigate("/studies");
+      }, 4000);
+    }
+  }, [successUpdate]);
 
   useEffect(() => {
     const submitData = async () => {
@@ -102,7 +102,7 @@ if(successUpdate){
     if (e.target.files && e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
       const reader = new FileReader();
-  
+
       reader.onload = (event) => {
         if (event.target && event.target.result) {
           const base64String = event.target.result.toString();
@@ -112,7 +112,7 @@ if(successUpdate){
           }
         }
       };
-  
+
       reader.readAsDataURL(selectedFile);
     }
   };
@@ -124,17 +124,24 @@ if(successUpdate){
     >
       <h1 className="text-center text-cyanLight mt-5">Agrega un nuevo curso</h1>
       {errors ? (
-        <div style={{color: "red", height: "500px"}} className="fs-1 my-5 d-flex align-content-center">
+        <div
+          style={{ color: "red", height: "500px" }}
+          className="fs-1 my-5 d-flex align-content-center"
+        >
           <div className="w-100 text-center">{errors}</div>
         </div>
+      ) : successUpdate ? (
+        <div className="text-success my-5 fs-1 text-center p-5 success-add">
+          Estudio actualizado correctamente
+        </div>
       ) : (
-        successUpdate ?
-      <div className="text-success my-5 fs-1 text-center p-5 success-add">
-        Estudio actualizado correctamente
-      </div>
-      :
         study && (
-          <Form noValidate validated={validated} onSubmit={handleSubmit} method="POST">
+          <Form
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit}
+            method="POST"
+          >
             <Row>
               <Col>
                 <Form.Group className="mb-3">
@@ -144,6 +151,7 @@ if(successUpdate){
                   <Form.Control
                     onChange={handleChangeNombre}
                     required
+                    name="nombre"
                     className="rounded-0 text-center"
                     value={study.nombre}
                     placeholder="Ingresar nombre del curso"
@@ -152,12 +160,17 @@ if(successUpdate){
               </Col>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label className="text-magenLight text-uppercase mt-3">
+                  <Form.Label
+                    className="text-magenLight text-uppercase mt-3"
+                    for="estado"
+                  >
                     Estado del curso
                   </Form.Label>
                   <Form.Select
+                    id="estado"
                     onChange={handleChangeEstado}
                     required
+                    name="estado"
                     className="rounded-0 text-center"
                     defaultValue={study.estado}
                   >
@@ -178,6 +191,7 @@ if(successUpdate){
                     <Form.Control
                       onChange={handleChangeInstitucion}
                       required
+                      name="institucion"
                       className="rounded-0 text-center"
                       value={study.institucion}
                       placeholder="Ingresar nombre de la institucion"
@@ -194,11 +208,17 @@ if(successUpdate){
                 className="rounded-0 text-center"
                 type="file"
                 size="lg"
+                name="logoInstitucion"
                 onChange={handleChangeLogo}
               />
-             <div className="d-flex justify-content-center my-4">
-             <img className="img-fluid" style={{maxHeight:"200px"}} src={study.logoInstitucion} alt={study.nombre} />
-             </div>
+              <div className="d-flex justify-content-center my-4">
+                <img
+                  className="img-fluid"
+                  style={{ maxHeight: "200px" }}
+                  src={study.logoInstitucion}
+                  alt={study.nombre}
+                />
+              </div>
             </Form.Group>
             <Button
               variant="primary"

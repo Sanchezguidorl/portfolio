@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Study, createStudy, dataStudy } from "../customHooks/studiesMethods";
+import { StudySave, createStudy, dataStudy } from "../customHooks/studiesMethods";
 import { useNavigate } from "react-router-dom";
 
 function FormCreateStudies() {
-  const [validated, setValidated] = useState(false);
-  const [study, setStudy] = useState<Study | undefined>({
+  const [study, setStudy] = useState<StudySave>({
     nombre: "",
-    logoInstitucion: "",
-    institucion: "",
     estado: "",
+    institucion: "",
+    logoInstitucion: "",
   });
   const [errors, setErrors] = useState<string>("");
   const navigate = useNavigate();
   const [successCreation, setSuccessCreation] = useState(false);
 
-  useEffect(() => {
     const submitData = async () => {
+      if(study){
       try {
         const newStudy: dataStudy = await createStudy(study);
         if (newStudy.success) {
@@ -25,19 +24,14 @@ function FormCreateStudies() {
       } catch (error) {
         setErrors("Ha ocurrido un error al actualizar los datos");
       }
-    };
-    if (validated) {
-      submitData();
     }
-  }, [validated, study]);
+    };
 
-  useEffect(() => {
     if (successCreation) {
       setTimeout(() => {
         navigate("/studies");
       }, 4000);
     }
-  }, [successCreation]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,7 +39,7 @@ function FormCreateStudies() {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      setValidated(true);
+      submitData();
     }
   };
 
@@ -98,21 +92,20 @@ function FormCreateStudies() {
       style={{ fontFamily: "Raleway", maxWidth: "700px" }}
     >
       <h1 className="text-center text-cyanLight mt-5">Agrega un nuevo curso</h1>
-      {errors ? (
+      {errors ?
         <div
           style={{ color: "red", height: "500px" }}
           className="fs-1 my-5 d-flex align-content-center"
         >
           <div className="w-100 text-center">{errors}</div>
         </div>
-      ) : successCreation ? (
+      : successCreation ? (
         <div className="text-success my-5 fs-1 text-center p-5 success-add">
           Estudio agregado correctamente
         </div>
       ) : (
         <Form
           noValidate
-          validated={validated}
           onSubmit={handleSubmit}
           method="POST"
         >
@@ -126,7 +119,7 @@ function FormCreateStudies() {
                   onChange={handleChangeNombre}
                   required
                   className="rounded-0 text-center"
-                  value={study.nombre}
+                  value={study?.nombre}
                   placeholder="Ingresar nombre del curso"
                 />
               </Form.Group>
@@ -140,7 +133,7 @@ function FormCreateStudies() {
                   onChange={handleChangeEstado}
                   required
                   className="rounded-0 text-center"
-                  defaultValue={study.estado}
+                  defaultValue={study?.estado}
                 >
                   <option value="" disabled>
                     --Seleccionar un estado--
@@ -160,7 +153,7 @@ function FormCreateStudies() {
                     onChange={handleChangeInstitucion}
                     required
                     className="rounded-0 text-center"
-                    value={study.institucion}
+                    value={study?.institucion}
                     placeholder="Ingresar nombre de la institucion"
                   />
                 </Form.Group>
@@ -178,14 +171,17 @@ function FormCreateStudies() {
               size="lg"
               onChange={handleChangeLogo}
             />
-            <div className="d-flex justify-content-center my-4">
-              <img
-                className="img-fluid"
-                style={{ maxHeight: "200px" }}
-                src={study.logoInstitucion}
-                alt={study.nombre}
-              />
-            </div>
+{
+  study && study.logoInstitucion &&
+  <div className="d-flex justify-content-center my-4">
+  <img
+    className="img-fluid"
+    style={{ maxHeight: "200px" }}
+    src={study.logoInstitucion}
+    alt={study.nombre}
+  />
+</div>
+}
           </Form.Group>
           <Button
             variant="primary"

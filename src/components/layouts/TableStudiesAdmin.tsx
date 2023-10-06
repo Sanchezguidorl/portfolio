@@ -5,23 +5,20 @@ import { Link } from "react-router-dom";
 import { deleteStudy } from "./../customHooks/studiesMethods";
 
 function TableStudiesAdmin() {
-  const [studies, setStudies] = useState<Study[]>([]);
+  const [studies, setStudies] = useState<Study[]|[]>();
   const [errors, setErrors] = useState<string>("");
-  const [deleteError, setDeleteError] = useState<boolean>();
   const [loading, setLoading] = useState<boolean>();
 
-  const fetchData = async () => {
+  const fetchData = async()=>{
     setLoading(true);
     try {
       const studies: dataStudy = await getStudies();
       if (studies.success) {
-        setStudies(studies.data);
+        const data = Array.isArray(studies.data) ? studies.data : [];
+        setStudies(data);
         setLoading(false);
-      } else {
-        setErrors("No existen estudios cargados");
       }
     } catch (error) {
-      console.log(error);
       setErrors("Error al traer los datos de estudios realizados");
     }
   };
@@ -33,19 +30,19 @@ function TableStudiesAdmin() {
   const deleteStudyById = async (id: string) => {
     try {
       const studyDeleted = await deleteStudy(id);
-if(studyDeleted.success){
-  fetchData();}
+      if (studyDeleted.success) {
+        fetchData();
+      }
     } catch (error) {
-      console.log(error);
+      setErrors("Error al eliminar estudio");
     }
   };
 
-  return (
-    loading ?
+  return loading ? (
     <div className="loadingSection w-100">
-    <div className="loader"></div>
-        </div>
-    :
+      <div className="loader"></div>
+    </div>
+  ) : (
     <Table responsive striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -76,7 +73,7 @@ if(studyDeleted.success){
                 <Link to={""} onClick={() => deleteStudyById(study._id)}>
                   X
                 </Link>
-                <Link to={`/form/studies?id=${study._id}`}>editar</Link>
+                <Link to={`/form/studies/${study._id}`}>editar</Link>
               </td>
             </tr>
           ))

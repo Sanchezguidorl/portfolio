@@ -4,10 +4,13 @@ import logo from "../../assets/images/capibara-logo.png";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faRightToBracket } from "@fortawesome/free-solid-svg-icons/faRightToBracket";
 function Header() {
   const [headerSticky, setHeaderSticky] = useState(false);
-  console.log(import.meta.env.REACT_APP_LOGLOCO)
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = (): void => {
       if (window.scrollY > 0) {
@@ -18,11 +21,16 @@ function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    localStorage.clear();
+    navigate("/");
+  };
 
   const scrollToSection = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -85,18 +93,41 @@ function Header() {
               >
                 SOBRE MI
               </a>
-              <Link
-                to={"studies"}
-                className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
-              >
-                studies
-              </Link>
-              <Link
-                to={"projects"}
-                className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
-              >
-                projects
-              </Link>
+              {localStorage.getItem("token") && (
+                <>
+                  {" "}
+                  <Link
+                    to={"studies"}
+                    className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
+                  >
+                    studies
+                  </Link>
+                  <Link
+                    to={"projects"}
+                    className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
+                  >
+                    projects
+                  </Link>
+                </>
+              )}
+              {localStorage.getItem("token") ? (
+                <Link
+                  to="/"
+                  onClick={handleLogout}
+                  className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
+                >
+                  Logout
+                  <FontAwesomeIcon className="ms-2" icon={faRightFromBracket} />
+                </Link>
+              ) : (
+                <Link
+                  to={"/login"}
+                  className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
+                >
+                  Login
+                  <FontAwesomeIcon className="ms-2" icon={faRightToBracket} />
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

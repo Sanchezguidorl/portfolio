@@ -1,0 +1,37 @@
+#Login{
+    min-height: 55vh;
+    .login-content{
+        margin-top: 100px;
+        padding-top: 100px;
+        max-width: 500px;
+    legend{
+        font-family: "Orbitron",sans-serif;
+    }
+    font-family: 'Raleway', sans-serif;
+   
+.errors-login{
+    color: red;
+animation: fadeErrors 4.2s ease-in-out;
+left: 0%;
+right: 0%;
+top: 10%;
+background-color: rgba(240, 248, 255, 0.288);
+}
+
+}
+}
+
+@keyframes fadeErrors {
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
