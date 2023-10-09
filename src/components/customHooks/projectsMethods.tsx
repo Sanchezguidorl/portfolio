@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
-const DB= "http://localhost:5000";
+const DB = import.meta.env.VITE_REACT_APP_DB;
 
 const token= localStorage.getItem("token") || '';
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: DB,
   headers: {
     Authorization: `Bearer ${token}`
   },
