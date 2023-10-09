@@ -12,7 +12,8 @@ const fetchData=async()=>{
   const studiesData:dataStudy= await getStudies();
 
 if(studiesData.success){
-  setStudies(studiesData.data);
+  const data= studiesData.data || [];
+  setStudies(data);
 }
 }
 

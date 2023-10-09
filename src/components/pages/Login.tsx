@@ -1,6 +1,5 @@
 import { Button, Container, Form } from "react-bootstrap";
 import {
-  AuthDataWithError,
   AuthDataWithToken,
   UserI,
   authUser,
@@ -34,12 +33,12 @@ function Login() {
   const loginUser = async () => {
     setLoading(true);
     try {
-      const login: AuthDataWithToken | AuthDataWithError = await authUser(
+      const login: AuthDataWithToken = await authUser(
         userData
       );
-      console.log(login);
       if (login.success) {
-        localStorage.setItem("token", login.token);
+        const token= login.token || '';
+        localStorage.setItem("token", token);
       }
       setLoading(false);
       setSuccessLogin(true);

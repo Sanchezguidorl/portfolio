@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 const DB = "http://localhost:5000";
 
-const token= localStorage.getItem("token");
+const token= localStorage.getItem("token") || '';
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5000",
   headers: {
@@ -26,7 +26,7 @@ export interface StudySave {
 
 export interface dataStudy {
   success: boolean;
-  data: Study[] | Study | null;
+  data: Study[]| [];
 }
 export const getStudies = async (): Promise<dataStudy> => {
   try {

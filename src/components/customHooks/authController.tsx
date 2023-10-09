@@ -5,20 +5,15 @@ export interface UserI{
     password: string
 }
 
-export interface AuthDataWithError{
-    success: boolean,
-    error: string
-}
-
 export interface AuthDataWithToken{
     success: boolean,
     token: string
 }
 
-export const authUser= async(user:UserI): Promise<AuthDataWithError|AuthDataWithToken>=>{
+export const authUser= async(user:UserI): Promise<AuthDataWithToken>=>{
     try {
-        const userAuth:AuthDataWithError | AuthDataWithToken= await axios.post(`${DB}/login`, user);
-        return userAuth.data;
+        const userAuth: AuthDataWithToken= await axios.post(`${DB}/login`, user);
+        return userAuth;
     } catch (error) {
         throw new Error();
     }
