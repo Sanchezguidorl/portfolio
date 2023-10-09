@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-const DB = import.meta.env.VITE_REACT_APP_DB;
+const DB ="https://portfolio-2023-backend-six.vercel.app/";
 
 const token= localStorage.getItem("token") || '';
 const axiosInstance = axios.create({
