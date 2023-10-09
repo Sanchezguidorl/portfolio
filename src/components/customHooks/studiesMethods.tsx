@@ -1,6 +1,14 @@
 import axios, { AxiosResponse } from "axios";
 const DB = "http://localhost:5000";
 
+const token= localStorage.getItem("token");
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:5000",
+  headers: {
+    Authorization: `Bearer ${token}`
+  },
+});
+
 export interface Study {
   _id: string;
   nombre: string;
@@ -32,8 +40,8 @@ export const getStudies = async (): Promise<dataStudy> => {
 };
 export const getStudiesById = async (id: string): Promise<dataStudy> => {
   try {
-    const studyData: AxiosResponse<dataStudy> = await axios.get(
-      `${DB}/studies/${id}`
+    const studyData: AxiosResponse<dataStudy> = await axiosInstance.get(
+      `/studies/${id}`
     );
     return studyData.data;
   } catch (error) {
@@ -43,8 +51,8 @@ export const getStudiesById = async (id: string): Promise<dataStudy> => {
 
 export const updateStudy = async (study: Study): Promise<dataStudy> => {
   try {
-    const studyData: AxiosResponse<dataStudy> = await axios.post(
-      `${DB}/studies/update/${study._id}`,
+    const studyData: AxiosResponse<dataStudy> = await axiosInstance.post(
+      `/studies/update/${study._id}`,
       study
     );
     return studyData.data;
@@ -55,8 +63,8 @@ export const updateStudy = async (study: Study): Promise<dataStudy> => {
 
 export const createStudy = async (study: StudySave): Promise<dataStudy> => {
   try {
-    const studyData: AxiosResponse<dataStudy> = await axios.post(
-      `${DB}/studies/create`,
+    const studyData: AxiosResponse<dataStudy> = await axiosInstance.post(
+      `/studies/create`,
       study
     );
     return studyData.data;
@@ -67,8 +75,8 @@ export const createStudy = async (study: StudySave): Promise<dataStudy> => {
 
 export const deleteStudy = async (id: string): Promise<dataStudy> => {
   try {
-    const studyData: AxiosResponse<dataStudy> = await axios.delete(
-      `${DB}/studies/delete/${id}`
+    const studyData: AxiosResponse<dataStudy> = await axiosInstance.delete(
+      `/studies/delete/${id}`
     );
     return studyData.data;
   } catch (error) {

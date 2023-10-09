@@ -1,6 +1,14 @@
 import axios, { AxiosResponse } from "axios";
 const DB= "http://localhost:5000";
 
+const token= localStorage.getItem("token");
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:5000",
+  headers: {
+    Authorization: `Bearer ${token}`
+  },
+});
+
 export interface ProjectI {
     _id: string;
     nombre: string;
@@ -28,7 +36,7 @@ export const getProjects=async(): Promise<dataProjects>=>{
 };
 export const getProjectById=async(id:string): Promise<dataProjects>=>{
     try {
-        const projectData:AxiosResponse<dataProjects>= await axios.get(`${DB}/projects/${id}`);
+        const projectData:AxiosResponse<dataProjects>= await axiosInstance.get(`/projects/${id}`);
         return projectData.data;
       } catch (error) {
         throw new Error();
@@ -37,7 +45,7 @@ export const getProjectById=async(id:string): Promise<dataProjects>=>{
 
 export const updateProject = async (project: ProjectI): Promise<dataProjects> => {
   try {
-    const projectData: AxiosResponse<dataProjects> = await axios.put(`${DB}/projects/update/${project._id}`, project);
+    const projectData: AxiosResponse<dataProjects> = await axiosInstance.put(`/projects/update/${project._id}`, project);
     return projectData.data;
   } catch (error) {
     throw new Error();
@@ -46,7 +54,7 @@ export const updateProject = async (project: ProjectI): Promise<dataProjects> =>
 
 export const createProject = async (project: ProjectSaveI): Promise<dataProjects > => {
   try {
-    const projectData: AxiosResponse<dataProjects> = await axios.post(`${DB}/projects/create`, project);
+    const projectData: AxiosResponse<dataProjects> = await axiosInstance.post(`/projects/create`, project);
     return projectData.data;
   } catch (error) {
     throw new Error();
@@ -55,7 +63,7 @@ export const createProject = async (project: ProjectSaveI): Promise<dataProjects
 
 export const deleteProject = async (id: string): Promise<dataProjects> => {
   try {
-    const projectData: AxiosResponse<dataProjects> = await axios.delete(`${DB}/projects/delete/${id}`);
+    const projectData: AxiosResponse<dataProjects> = await axiosInstance.delete(`/projects/delete/${id}`);
     return projectData.data;
   } catch (error) {
     throw new Error();

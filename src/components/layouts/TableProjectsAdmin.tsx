@@ -60,7 +60,7 @@ projects.map((project)=>
 <tr key={project._id}>
   <td><img src={project.imagen} className="td-img-table-projects" alt={project.nombre}/></td>
   <td>{project.nombre}</td>
-  <td>{project.descripcion}</td>
+  <td>{project.descripcion.slice(0,30)+"..."}</td>
   <td>{project.url}</td>
   <td>
 <button onClick={()=>handleDelete(project._id)}>x</button>
