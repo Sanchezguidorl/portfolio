@@ -13,7 +13,7 @@ export interface AuthDataWithToken{
 export const authUser= async(user:UserI): Promise<AuthDataWithToken>=>{
     try {
         const userAuth: AuthDataWithToken= await axios.post(`${DB}/login`, user);
-        return userAuth;
+        return userAuth.data;
     } catch (error) {
         throw new Error();
     }
