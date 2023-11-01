@@ -38,7 +38,7 @@ function Login() {
       );
       console.log(login)
       if (login.success) {
-        const token= login.token || '';
+        const token= login.token;
         localStorage.setItem("token", token);
       }
       setLoading(false);
