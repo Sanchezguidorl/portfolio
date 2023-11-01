@@ -13,7 +13,7 @@ function LevelSkills() {
   return (
     <Row id="LevelSkills" className="d-flex justify-content-center" >
 {tecnologies.map((item,index)=>
-      <Col xs={6} sm={3} key={index} className="p-2 d-flex justify-content-center align-items-center">
+      <Col xs={4} md={2} sm={3} key={index} className="p-1 d-flex justify-content-center align-items-center">
       <div className="progressBar">
         <CircularProgressbarWithChildren
           value={item.level}

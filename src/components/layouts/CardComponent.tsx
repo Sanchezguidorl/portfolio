@@ -6,6 +6,8 @@ import {
   dataProjects,
   getProjects,
 } from "../customHooks/projectsMethods";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 function CardComponent() {
   const [allProjects, setAllProjects] = useState<ProjectI[]>();
@@ -16,9 +18,9 @@ function CardComponent() {
   //estado para mostrar el modal
   const [show, setShow] = useState(false);
   //estado que controla los datos del objeto que debe mostrar el modal
-  const [modalProjectByIndex, setModalProjectByIndex] = useState<ProjectI>();
+  const [modalProjectByIndex, setModalProjectByIndex] = useState<ProjectI|null>(null);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () =>{ setShow(false); setModalProjectByIndex(null)};
   const handleShow = () => setShow(true);
 
   const fetchProjects = async () => {
@@ -34,33 +36,41 @@ function CardComponent() {
       );
     }
   };
-
-  //Cambia atrue el estado para mostrar el modal en caso de que modalProjectByIndex tenga datos
-  useEffect(() => {
-    if (modalProjectByIndex) {
-      handleShow();
-    }
-  }, [modalProjectByIndex]);
-
+  
   useEffect(() => {
     fetchProjects();
   }, []);
 
+  //Cambia a true el estado para mostrar el modal en caso de que modalProjectByIndex tenga datos
+    if (modalProjectByIndex!==null && show===false) {
+      handleShow();
+    }
+
+
   useEffect(() => {
-    if(allProjects){
-      setProjects(allProjects.length > 6 ? allProjects?.slice(0, 6) : allProjects);
+    if (allProjects) {
+      setProjects(
+        allProjects.length > 6 ? allProjects?.slice(0, 6) : allProjects
+      );
     }
   }, [allProjects]);
 
-
-  const handleShowAllProjects=()=>{
-  if(showAllCards){
-  setProjects(allProjects && allProjects.length > 6 ? allProjects?.slice(0, 6) : allProjects)
-}else{
-  setProjects(allProjects && allProjects.length > 6 ? allProjects: allProjects?.slice(0, 6) )
-}
-  setShowAllCards(!showAllCards);
-}
+  const handleShowAllProjects = () => {
+    if (showAllCards) {
+      setProjects(
+        allProjects && allProjects.length > 6
+          ? allProjects?.slice(0, 6)
+          : allProjects
+      );
+    } else {
+      setProjects(
+        allProjects && allProjects.length > 6
+          ? allProjects
+          : allProjects?.slice(0, 6)
+      );
+    }
+    setShowAllCards(!showAllCards);
+  };
   return (
     <>
       {errors ? (
@@ -80,15 +90,9 @@ function CardComponent() {
                 xs={12}
                 md={6}
                 lg={4}
-                className="p-1 col-card-projects"
+                className="p-1 py-2 col-card-projects"
               >
-                <Card
-                  id="Card"
-                  className="bg-dark text-white"
-                  onClick={() => {
-                    setModalProjectByIndex(project);
-                  }}
-                >
+                <Card id="Card" className="bg-dark text-white">
                   <img
                     src={project.imagen}
                     alt=""
@@ -98,17 +102,31 @@ function CardComponent() {
                     <Card.Title>{project.nombre}</Card.Title>
                     <Card.Text>{project.descripcion}</Card.Text>
                   </Card.ImgOverlay>
+                  <div className="border-overflow"></div>
+                  <div className="cardButtonsOverlay">
+                    <a
+                      onClick={() => {
+                        setModalProjectByIndex(project);
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faEye} />
+                    </a>
+                    <a href={project.url} target="blank">
+                      {" "}
+                      <FontAwesomeIcon icon={faGlobe} />
+                    </a>
+                  </div>
                 </Card>
               </Col>
             ))}
-          { (allProjects && allProjects.length > 6) &&
+          {allProjects && allProjects.length > 6 && (
             <div
               className="d-flex justify-content-center align-items-center py-5 position-absolute bottom-0 see-more-button"
               onClick={handleShowAllProjects}
             >
-              <p className="">{showAllCards?"Ver menos": "Ver más"}</p>
+              <p className="">{showAllCards ? "Ver menos" : "Ver más"}</p>
             </div>
-          }
+          )}
         </Row>
       )}
       {modalProjectByIndex && (

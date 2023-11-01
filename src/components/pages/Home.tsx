@@ -10,7 +10,7 @@ function Home() {
   return (
 <>
 <Presentation/>
-<h1 className='h1-studies text-uppercase text-center text-magen'>Estudios Realizados</h1>
+<h1 className='h1-studies text-uppercase text-center text-magen mb-5'>Estudios Realizados</h1>
 <Studies/>
 <Container className='my-5'>
 <Row>
@@ -18,9 +18,9 @@ function Home() {
   <Carrousel/>
   <div className='position-absolute cover-carrousel w-100 h-100'></div>
 </Col>
-<Col xs={12} lg={7}><LevelSkills/></Col>
+<Col xs={12} lg={7} className='d-flex align-items-center'><LevelSkills/></Col>
 </Row>
-<h1 className='h1-studies text-uppercase text-center text-magen mt-5'>Mis Proyectos</h1>
+<h1 className='h1-studies text-uppercase text-center text-magen my-5'>Mis Proyectos</h1>
 <Projects/>
 </Container>
 </>

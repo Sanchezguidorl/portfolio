@@ -29,11 +29,11 @@ fetchData();
 studies.map((study)=>(
   <Col key={study._id} xs={12} md={6} lg={4} className="p-1">
   <Card
-    className="p-4 bg-magenDark text-secondaryCyan border border-1 border-secondaryCyan h-100"
+    className="p-0 bg-magenDark text-secondaryCyan border border-1 border-secondaryCyan h-100 rounded-0"
   >
     <Card.Body>
-      <Card.Title className="fs-6 text-uppercase"><img src={`${study.logoInstitucion}`} alt={study.nombre} className="logo-study me-3"/>{study.institucion}</Card.Title>
-      <Card.Text className="fs-5 p-3">
+      <Card.Title className="fs-6 text-uppercase m-0"><img src={`${study.logoInstitucion}`} alt={study.nombre} className="logo-study me-3"/>{study.institucion}</Card.Title>
+      <Card.Text className="fs-5 p-3 pb-0">
 {study.nombre}
       </Card.Text>
     </Card.Body>

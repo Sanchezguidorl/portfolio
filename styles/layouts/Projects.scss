@@ -3,23 +3,65 @@
 
     .col-card-projects{
         overflow: hidden;
-        height: 300px;
+        height: 260px;
     }
-
+    
     #Card{
+        user-select: none;
         background-position: center center;
         background-size: cover;
-    animation:2s showCard forwards;
+        animation:2s showCard forwards;
+        position: relative;
+        
+}
+
+    .cardButtonsOverlay{
+        opacity: 1;
+        box-sizing: border-box;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        transform: translateY(100%);
+        background-color: #171717;
+        height:260px;
+        display: flex;
+        justify-content: space-around;
+        align-items:center;
+        font-size: 40px;
+        transition: all 1s ease;
+        z-index: 990;
+        border-top: 2px solid $cyan;
+        svg{
+            color: magenta;
+            filter: brightness(0.7);
+        }
+
+        svg:hover{
+            filter: brightness(1.3);
+        }
+    }
+
+
+    .border-overflow{
+        height: 250px;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        border-bottom: 2px solid $cyan;
+        z-index: 900;
     }
 
     #Card:hover {
         cursor: pointer;
+        .cardButtonsOverlay{
+            transform: translateY(0);
+        }
     }
 
     #Card img {
         transition: .6s;
     }
-    #Card:hover img {
+    #Card img {
         filter: brightness(0.3);
     }
 }
@@ -61,3 +103,4 @@
         opacity: 1;
     }
 }
+
