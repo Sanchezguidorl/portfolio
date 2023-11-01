@@ -1,5 +1,5 @@
 import axios from "axios";
-const DB = "http://localhost:5000";
+const DB =  import.meta.env.VITE_REACT_APP_DB;
 export interface UserI{
     user: string,
     password: string

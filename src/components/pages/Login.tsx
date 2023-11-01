@@ -36,6 +36,7 @@ function Login() {
       const login: AuthDataWithToken = await authUser(
         userData
       );
+      console.log(login)
       if (login.success) {
         const token= login.token || '';
         localStorage.setItem("token", token);
@@ -55,7 +56,6 @@ function Login() {
       setErrors("Todos los campos son obligatorios");
       setValidated(false);
     } else {
-      console.log("Campos válidos. Puedes enviar el formulario.");
       setValidated(true);
       loginUser();
     }
