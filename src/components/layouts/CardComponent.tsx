@@ -121,7 +121,7 @@ function CardComponent() {
             ))}
           {allProjects && allProjects.length > 6 && (
             <div
-              className="d-flex justify-content-center align-items-center py-5 position-absolute bottom-0 see-more-button"
+              className="d-flex justify-content-center align-items-center py-3 position-absolute bottom-0 see-more-button"
               onClick={handleShowAllProjects}
             >
               <p className="">{showAllCards ? "Ver menos" : "Ver más"}</p>
