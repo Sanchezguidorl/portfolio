@@ -85,12 +85,12 @@
     text-transform: uppercase;
     background-color:#6e3c7c80 ;
     cursor: pointer;
-    transition: 1s all;
+    transition: all 1s ease;
 }
 .see-more-button:hover{
     color: $cyan;
-    background:linear-gradient(#8b00b68a, #000);
-    transition: 1s ease-in-out;
+    background:#8b00b68a;
+    transition: 0.6s ease-in-out;
 }
 
 

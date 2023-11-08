@@ -1,24 +1,19 @@
 #Footer{
     font-family: "Orbitron",sans-serif;
 
-   .social-media{
-        text-shadow: $cyan 0px 0px 10px;
+   .social-media, .social-media-icon{
+        color: rgb(132, 174, 195);
         transition: 0.5s;
     }
     
    .social-media-icon{
-        border-radius: 50%;
-        box-shadow: #35ffff4f 0px 0px 5px;
         width: 30px;
         height: 30px;
         padding: 8px;
         transition: 0.5s;
     }
-   .anchor-footer:hover .social-media{
-        text-shadow: $magen 0px 0px 20px;
+   .anchor-footer:hover .social-media, .anchor-footer:hover .social-media-icon{
+    color: $magenLight;
     }
     
-   .anchor-footer:hover .social-media-icon{
-        box-shadow: $magen 0px 0px 10px;
-    }
 }

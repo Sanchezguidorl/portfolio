@@ -1,13 +1,12 @@
 import { Navbar } from "react-bootstrap";
 import { MouseEvent } from "react";
-import logo from "../../assets/images/capibara-logo.png";
+import logo from "../../assets/images/capibara-logo.webp";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { faRightToBracket } from "@fortawesome/free-solid-svg-icons/faRightToBracket";
 function Header() {
   const [headerSticky, setHeaderSticky] = useState(false);
   const navigate = useNavigate();
@@ -120,13 +119,7 @@ function Header() {
                   <FontAwesomeIcon className="ms-2" icon={faRightFromBracket} />
                 </Link>
               ) : (
-                <Link
-                  to={"/login"}
-                  className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
-                >
-                  Login
-                  <FontAwesomeIcon className="ms-2" icon={faRightToBracket} />
-                </Link>
+                <div></div>
               )}
             </Nav>
           </Navbar.Collapse>

@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import devPhoto from "../../assets/images/foto-card.png";
+import devPhoto from "../../assets/images/foto-card.webp";
 import { useEffect, useState } from "react";
 
 function Presentation() {
@@ -14,8 +14,8 @@ function Presentation() {
   ]
 
   const textDescription = [
-    "Durante los últimos dos años, he perfeccionado mis habilidades de forma autodidacta y a través de cursos en la Universidad Tecnológica Nacional de Argentina. También he ampliado mis horizontes en el desarrollo mediante el programa de estudio Oracle Next Education y Argentina Programa, siempre enfocado en el aprendizaje continuo. He dominado lenguajes y tecnologías esenciales como HTML, CSS, SASS y Bootstrap, así como JavaScript, PHP y Java. Mi experiencia incluye trabajo con bases de datos SQL y proyectos prácticos con frameworks como Laravel, Angular y React.",
-    " Recientemente, he creado proyectos personales en React, desarrollando aplicaciones que consumen APIs para ofrecer soluciones interactivas y enriquecedoras. Además, estoy aprendiendo Express y participando en la creación de APIs que respaldan la lógica empresarial de mis aplicaciones en React. Busco una oportunidad para ganar experiencia en desarrollo web, tanto en el frontend como en el backend. Me entusiasma el trabajo en equipo y colaborar de manera efectiva. Encuentro gran satisfacción en tanto enseñar como aprender.",
+    "Durante los últimos dos años, he perfeccionado mis habilidades de forma autodidacta y a través de cursos en la Universidad Tecnológica Nacional de Argentina. También he ampliado mis horizontes en el desarrollo mediante los programas de estudio Oracle Next Education y Argentina Programa, siempre enfocado en el aprendizaje continuo. He dominado Domino tecnologías esenciales como HTML, CSS, SASS y Bootstrap, así como lenguajes tales como JavaScript y PHP. Mi experiencia incluye la creación de proyectos con bases de datos SQL/MongoDB y proyectos prácticos con frameworks como Angular y Next js.",
+    " Recientemente, he empezado a sustituir mis proyectos back-end realizados con Java por expressjs creando proyectos personales con React como front-end, desarrollando aplicaciones que consumen APIs para ofrecer soluciones interactivas y enriquecedoras que respaldan la lógica empresarial. Me entusiasma el trabajo en equipo y colaborar de manera efectiva. Encuentro gran satisfacción en tanto enseñar como aprender.",
   ];
   const [textP, setTextP] = useState(true);
   const [borderRadiusStyle, setBorderRadiusStyle] = useState<{borderRadius: string}>(stylesBorderRadius[0]);
