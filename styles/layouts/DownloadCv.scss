@@ -1,0 +1,65 @@
+#DownloadCV {
+    margin-top: 100px;
+    height: 250px;
+
+.buttonDownload{
+    position: relative;
+}
+
+h3{
+margin-bottom: 30px;
+color: $magenLight;
+text-shadow: 0px 0px 10px #f31a7cbb;
+font-weight: 100;
+}
+
+
+#CVcontainer {
+        border-radius: 50%;
+        border: 1px ridge  rgb(132, 174, 195);
+        box-shadow: 0px 0px 30px rgba(132, 174, 195, 0.601);
+        height: 150px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .7s ease;
+    }
+
+    #svgOverlay {
+        position: absolute;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    svg {
+        box-sizing: border-box;
+        height: 60px;
+        transition: .7s ease;
+        fill: rgb(132, 174, 195);
+    }
+
+    #svgOverlay:hover~#CVcontainer {
+        border: 1px solid $magenLight;
+        fill: $magenLight;
+        background: radial-gradient(#fae7ff3a, #00000000 50%);
+        box-shadow: 0px 0px 30px #f31a7b99;
+        height: 140px;
+        width: 140px;
+    }
+
+
+    #svgOverlay:hover {
+        svg {
+            fill: $magenLight;
+        }
+        height: 140px;
+        width: 140px;
+    }
+}

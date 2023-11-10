@@ -22,9 +22,9 @@ fetchData();
 
 
   return (
-<Container>
+<Container id="Studies">
 {studies ?
-    <Row id="Studies" className="d-flex justify-content-center">
+    <Row className="d-flex justify-content-center">
 {studies.length>0 && 
 studies.map((study)=>(
   <Col key={study._id} xs={12} md={6} lg={4} className="p-1">

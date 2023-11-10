@@ -7,7 +7,7 @@ import {
   getProjects,
 } from "../customHooks/projectsMethods";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faGlobe, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function CardComponent() {
   const [allProjects, setAllProjects] = useState<ProjectI[]>();
@@ -98,10 +98,6 @@ function CardComponent() {
                     alt=""
                     className="position-absolute w-100"
                   />
-                  <Card.ImgOverlay>
-                    <Card.Title>{project.nombre}</Card.Title>
-                    <Card.Text>{project.descripcion}</Card.Text>
-                  </Card.ImgOverlay>
                   <div className="border-overflow"></div>
                   <div className="cardButtonsOverlay">
                     <a
@@ -121,10 +117,10 @@ function CardComponent() {
             ))}
           {allProjects && allProjects.length > 6 && (
             <div
-              className="d-flex justify-content-center align-items-center py-3 position-absolute bottom-0 see-more-button"
+              className="position-absolute bottom-0 see-more-button"
               onClick={handleShowAllProjects}
             >
-              <p className="">{showAllCards ? "Ver menos" : "Ver más"}</p>
+              {showAllCards ? <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />}
             </div>
           )}
         </Row>

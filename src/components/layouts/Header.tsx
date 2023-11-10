@@ -37,7 +37,7 @@ function Header() {
     const targetElement = document.getElementById(targetId || "");
 
     if (targetElement) {
-      const offset = 160;
+      const offset = 220;
       const targetPosition =
         targetElement.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
@@ -87,7 +87,7 @@ function Header() {
               </a>
               <a
                 onClick={scrollToSection}
-                href={"#Presentation"}
+                href={"#DownloadCV"}
                 className="text-magenLight text-uppercase text-decoration-none px-3 py-2 brightness"
               >
                 SOBRE MI

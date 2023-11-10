@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import devPhoto from "../../assets/images/foto-card.webp";
+import devPhoto from "../../assets/images/foto-dev.webp";
 import { useEffect, useState } from "react";
 
 function Presentation() {
@@ -40,7 +40,7 @@ function Presentation() {
 
 
   return (
-    <Container id="Presentation" className="my-5">
+    <Container id="Presentation" className="">
       <Row >
         <Col
           xs={12}

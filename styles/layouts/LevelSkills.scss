@@ -1,29 +1,22 @@
 @import 'react-circular-progressbar/dist/styles.css';
 
+#Skills{
+  margin: 140px 0px;
+}
+
 #LevelSkills{
     font-family: "Orbitron",sans-serif;
-    .progressBar{
-        max-width: 100px;
-
-        .CircularProgressbar-path {
-            stroke:$cyan;
-          }
-          .CircularProgressbar-trail {
-            stroke: $magenDark;
-          }
-
-          .progress-bar-p{
-            top: 52%;
-          }
-
+    .containerTec{
+      margin: 0 auto;
+      height: 100px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid $magenLight;
+      background: radial-gradient(#fae7ff3a, #00000000 50%);
+      box-shadow: 0px 0px 20px #f31a7b99;
           p{
             font-size: 11px;
+            color: $magenLight;
           }
-
-        .CircularProgressbar-text{
-            fill: $magen;
-            font-size: 8px;
-            text-shadow: $magenLight 0px 0px 10px;
-        }
     }
 }
