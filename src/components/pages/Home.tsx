@@ -12,7 +12,7 @@ function Home() {
 <>
 <Presentation/>
 <Container>
-<h1 className='h1-studies text-uppercase text-center my-5'>Mis Proyectos</h1>
+<h2 className='headerText text-uppercase text-center my-5'>Mis Proyectos</h2>
 <Projects/>
 <Row id='Skills'>
 <Col xs={12} lg={5} className='d-flex justify-content-center align-items-center position-relative'>
@@ -22,7 +22,7 @@ function Home() {
 <Col xs={12} lg={7} className='d-flex align-items-center'><LevelSkills/></Col>
 </Row>
 </Container>
-<h1 className='h1-studies text-uppercase text-center'>Estudios Realizados</h1>
+<h2 className='headerText text-uppercase text-center'>Estudios Realizados</h2>
 <Studies/>
 <DownloadCV/>
 </>

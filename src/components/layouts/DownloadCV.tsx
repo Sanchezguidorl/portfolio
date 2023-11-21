@@ -1,12 +1,12 @@
 import { Container } from "react-bootstrap";
-
+import CV from "../../assets/Curriculum-Guido Abel Sanchez.pdf";
 
 function DownloadCV() {
   return (
     <Container id="DownloadCV" className="d-flex flex-column text-center">
-      <h3>DESCARGA MI CURRÍCULUM</h3>
+      <h2 className="headerText">DESCARGA MI CURRÍCULUM</h2>
 <div className="buttonDownload d-flex justify-content-center">
-  <a href="public\files\curriculum-guido-sanchez.pdf" id="svgOverlay" download>
+  <a href={CV} id="svgOverlay" download>
     {""}
       <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520.000000 520.000000"
  preserveAspectRatio="xMidYMid meet">

@@ -53,8 +53,10 @@ export const updateProject = async (project: ProjectI): Promise<dataProjects> =>
 };
 
 export const createProject = async (project: ProjectSaveI): Promise<dataProjects > => {
+  console.log(project)
   try {
     const projectData: AxiosResponse<dataProjects> = await axiosInstance.post(`/projects/create`, project);
+    console.log(projectData)
     return projectData.data;
   } catch (error) {
     throw new Error();
