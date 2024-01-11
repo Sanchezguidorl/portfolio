@@ -27,7 +27,7 @@ function CardComponent() {
     try {
       const projectsData: dataProjects = await getProjects();
       if (projectsData.success && Array.isArray(projectsData.data)) {
-        setAllProjects(projectsData.data);
+        setAllProjects(projectsData.data.reverse());
         setLoading(false);
       }
     } catch (error) {

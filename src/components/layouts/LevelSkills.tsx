@@ -3,8 +3,8 @@ import { Col, Row } from "react-bootstrap";
 function LevelSkills() {
     const tecnologies=[{ tecnology:'Typescript'},{ tecnology:'MongoDB'},
     { tecnology:'Javascript'}, { tecnology:'React'},
-    { tecnology:'Express'},{ tecnology:'Sass'},
-    { tecnology:'SQL'},{ tecnology:'Bootstrap'}];
+    { tecnology:'Express'},{ tecnology:'Sass'},{ tecnology:'Tailwind'},
+    { tecnology:'SQL'},{ tecnology:'Bootstrap'},{ tecnology:'Figma'},{ tecnology:'Firebase'},{ tecnology:'Php'}];
 
   return (
     <Row id="LevelSkills" className="d-flex justify-content-center" >
