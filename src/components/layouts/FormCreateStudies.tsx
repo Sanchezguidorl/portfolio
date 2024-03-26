@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { StudySave, createStudy, dataStudy } from "../customHooks/studiesMethods";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function FormCreateStudies() {
   const [study, setStudy] = useState<StudySave>({

@@ -14,8 +14,8 @@ function Presentation() {
   ]
 
   const textDescription = [
-    "Durante los últimos dos años, he perfeccionado mis habilidades de forma autodidacta y a través de cursos en la Universidad Tecnológica Nacional de Argentina. También he ampliado mis horizontes en el desarrollo mediante los programas de estudio Oracle Next Education y Argentina Programa, siempre enfocado en el aprendizaje continuo. He dominado Domino tecnologías esenciales como HTML, CSS, SASS y Bootstrap, así como lenguajes tales como JavaScript y PHP. Mi experiencia incluye la creación de proyectos con bases de datos SQL/MongoDB y proyectos prácticos con frameworks como Angular y Next js.",
-    " Recientemente, he empezado a sustituir mis proyectos back-end realizados con Java por expressjs creando proyectos personales con React como front-end, desarrollando aplicaciones que consumen APIs para ofrecer soluciones interactivas y enriquecedoras que respaldan la lógica empresarial. Me entusiasma el trabajo en equipo y colaborar de manera efectiva. Encuentro gran satisfacción en tanto enseñar como aprender.",
+    "Soy un desarrollador web con experiencia en el desarrollo de aplicaciones web modernas. Tengo más de 2 años de experiencia en el desarrollo web en proyectos personales y estoy en búsqueda de mi primera experiencia formal en el mundo IT.",
+    " He trabajado en el desarrollo de aplicaciones web con un enfoque en la usabilidad y la accesibilidad utilizando tecnologías web como HTML, CSS, JavaScript, PHP, SQL, React y Next.js . También domino bases de datos MySQL y MongoDB. Soy un profesional con capacidad de aprendizaje continuo y adaptabilidad a nuevas tecnologías.",
   ];
   const [textP, setTextP] = useState(true);
   const [borderRadiusStyle, setBorderRadiusStyle] = useState<{borderRadius: string}>(stylesBorderRadius[0]);
