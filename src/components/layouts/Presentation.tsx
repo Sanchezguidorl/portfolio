@@ -14,8 +14,8 @@ function Presentation() {
   ]
 
   const textDescription = [
-    "Soy un desarrollador web con experiencia en el desarrollo de aplicaciones web modernas. Tengo más de 2 años de experiencia en el desarrollo web en proyectos personales y estoy en búsqueda de mi primera experiencia formal en el mundo IT.",
-    " He trabajado en el desarrollo de aplicaciones web con un enfoque en la usabilidad y la accesibilidad utilizando tecnologías web como HTML, CSS, JavaScript, PHP, SQL, React y Next.js . También domino bases de datos MySQL y MongoDB. Soy un profesional con capacidad de aprendizaje continuo y adaptabilidad a nuevas tecnologías.",
+    "Soy un desarrollador con un enfoque en tecnologías web. Me especializo desde hace más de 2 años en React, con su framework Next.js, y en Node.js implementando Typescript. Busco una oportunidad que me permita expandir mis habilidades en un entorno dinámico.",
+    "Mi experiencia abarca tanto las tecnologías del lado del cliente como la lógica del servidor, planificación de proyectos y desarrollo de migraciones.",
   ];
   const [textP, setTextP] = useState(true);
   const [borderRadiusStyle, setBorderRadiusStyle] = useState<{borderRadius: string}>(stylesBorderRadius[0]);
@@ -52,7 +52,7 @@ function Presentation() {
         </Col>
         <Col xs={12} md={8} className="text-magenLight p-0">
           <div className="position-relative">
-            <div className="overflow-hidden d-flex justify-content-center align-items-center bg-magenDark p-4 m-0 position-relative text-presentation border border-2 border-secondaryCyan">
+            <div className="  overflow-hidden d-flex justify-content-center align-items-center bg-magenDark px-4 m-0 position-relative text-presentation border border-2 border-secondaryCyan">
               {textP ? (
                 <p className={`mb-0 text-content`}>{textDescription[0]}</p>
               ) : (

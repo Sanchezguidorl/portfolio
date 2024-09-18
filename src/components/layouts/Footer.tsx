@@ -12,7 +12,7 @@ function Footer() {
             <p className='mb-1 social-media'>Github</p>
             <FontAwesomeIcon className='social-media-icon' icon={faGithub} />
             </a>
-            <a href="https://www.instagram.com/_zerodev/" target='blank' className='anchor-footer d-flex flex-column align-items-center text-decoration-none text-uppercase text-cyanLight'>
+            <a href="https://www.instagram.com/cygnus.agency/" target='blank' className='anchor-footer d-flex flex-column align-items-center text-decoration-none text-uppercase text-cyanLight'>
             <p className='mb-1 social-media'>Instagram</p>
             <FontAwesomeIcon className='social-media-icon' icon={faInstagram} />
             </a>

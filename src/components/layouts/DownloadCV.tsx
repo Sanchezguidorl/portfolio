@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import CV from "../../assets/Curriculum-Guido Abel Sanchez.pdf";
+import CV from "../../assets/images/Guido-Sanchez-CV.pdf";
 
 function DownloadCV() {
   return (
